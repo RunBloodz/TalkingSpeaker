@@ -1,0 +1,39 @@
+
+### Karta zegara i przycisk asystenta w YAML (widok Dashboard):
+
+# 1. Karta zegara (wymaga karty custom:clock-card lub wbudowanego elementu tekstowego)
+type: vertical-stack
+cards:
+  - type: custom:clock-card
+    time_format: '24h'
+    display_date: true
+    timezone: 'Europe/Warsaw'
+
+  - type: button
+    name: "Mów do mnie"
+    icon: mdi:microphone
+    icon_height: 80px
+    tap_action:
+      action: assist
+    hold_action:
+      action: none
+    styles:
+      card:
+        - height: 150px
+        - background-color: '#4CAF50'
+        - border-radius: 20px
+
+### Animacje i widoczność (Głosowy interfejs):
+# Używamy natywnego wsparcia Assist w Home Assistant.
+# W ustawieniach Dashboardu na Raspberry Pi (poprzez przeglądarkę)
+# można wybrać "Always show Assist" lub użyć dedykowanej wbudowanej
+# ikonki asystenta w prawym górnym rogu.
+
+### Wyświetlanie Dashboardu na ekranie 240x320:
+# W ustawieniach Dashboardu w HA (Raw configuration editor) warto dodać:
+# views:
+#   - title: Mobile View
+#     subview: false
+#     cards: [...]
+#     layout_options:
+#       grid_columns: 1
