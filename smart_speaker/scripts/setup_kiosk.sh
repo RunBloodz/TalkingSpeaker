@@ -7,28 +7,8 @@ sudo apt-get update
 sudo apt-get install -y chromium-browser xdotool unclutter x11-xserver-utils
 
 # 2. Skrypt startowy kiosku
-mkdir -p ~/.config/autostart
-cat <<EOF > ~/start_kiosk.sh
-#!/bin/bash
-# Adres IP Home Assistant (pobieramy z parametrów, domyślnie localhost)
-HA_URL="http://localhost:8123"
-
-# Wyłączenie wygaszania ekranu i oszczędzania energii
-xset s noblank
-xset s off
-xset -dpms
-
-# Ukrycie kursora myszy
-unclutter -idle 0.1 -root &
-
-# Uruchomienie Chromium w trybie Kiosk
-# --app= uruchamia stronę bez pasków narzędzi
-# --kiosk wymusza pełny ekran
-# --disable-restore-session-state zapobiega komunikatom o błędnym zamknięciu
-# --noerrdialogs ukrywa błędy
-chromium-browser --kiosk --app=\$HA_URL --noerrdialogs --disable-infobars --check-for-update-interval=31536000 --disable-session-crashed-bubble --disable-restore-session-state &
-EOF
-
+# Kopiujemy gotowy skrypt z folderu projektu do katalogu domowego
+cp $(dirname "$0")/start_kiosk.sh ~/start_kiosk.sh
 chmod +x ~/start_kiosk.sh
 
 # 3. Dodanie do autostartu środowiska graficznego (LXDE-pi)
