@@ -70,3 +70,8 @@ Jeśli używasz wyjścia PWM (prostszy wzmacniacz na jack/GPIO):
    ```
 
 Po wykonaniu kroków 1 i 2 wymagany jest restart: `sudo reboot`.
+
+## Konfiguracja Home Assistant (YAML)
+
+Po uruchomieniu ekranu i przeglądarki, musisz skonfigurować wygląd swojego głośnika w Home Assistant.
+Pełny poradnik krok po kroku znajdziesz w pliku: **[smart_speaker/HA_TUTORIAL_PL.md](smart_speaker/HA_TUTORIAL_PL.md)**.
