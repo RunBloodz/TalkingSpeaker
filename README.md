@@ -56,6 +56,12 @@ Jeśli używasz wyjścia PWM (prostszy wzmacniacz na jack/GPIO):
    chmod +x smart_speaker/scripts/optimize_system.sh
    sudo ./smart_speaker/scripts/optimize_system.sh
    ```
+
+3. (Opcjonalnie) Jeśli ekran jest czarny, ale nie biały (wymaga kopiowania obrazu):
+   ```bash
+   chmod +x smart_speaker/scripts/install_fbcp.sh
+   sudo ./smart_speaker/scripts/install_fbcp.sh
+   ```
 3. Skonfiguruj Kiosk (Przeglądarkę):
    ```bash
    chmod +x smart_speaker/scripts/setup_kiosk.sh
