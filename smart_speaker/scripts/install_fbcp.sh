@@ -7,15 +7,21 @@ echo "=== Instalacja FBCP (Mirroring obrazu) ==="
 
 # 1. Instalacja zależności
 sudo apt-get update
-sudo apt-get install -y cmake git
+sudo apt-get install -y cmake git libraspberrypi-dev raspberrypi-kernel-headers
 
 # 2. Pobranie i kompilacja fbcp
 cd /tmp
+rm -rf rpi-fbcp
 git clone https://github.com/tasanakorn/rpi-fbcp
 cd rpi-fbcp
 mkdir build
 cd build
-cmake ..
+
+# Poprawka dla brakujących nagłówków bcm_host.h (ścieżki w nowszych systemach)
+export CFLAGS="-I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux"
+export LDFLAGS="-L/opt/vc/lib"
+
+cmake -DCMAKE_INCLUDE_PATH="/opt/vc/include" -DCMAKE_LIBRARY_PATH="/opt/vc/lib" ..
 make
 sudo install fbcp /usr/local/bin/fbcp
 
